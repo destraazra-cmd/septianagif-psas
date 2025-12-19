@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beranda - SMK Bakti Nusantara 666</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h2>SMK BAKTI NUSANTARA 666</h2>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="beranda.html" class="active">Beranda</a></li>
+            <li><a href="data-siswa.html">Data Siswa</a></li>
+            <li><a href="pelanggaran.html">Pelanggaran</a></li>
+            <li><a href="aturan.html" target="_blank">Aturan Sekolah</a></li>
+            <li><a href="histori.html" target="_blank">Histori Ajaran</a></li>
+            <li><a href="info-sekolah.html" target="_blank">Info Sekolah</a></li>
+            <li><a href="tentang.html" target="_blank">Tentang</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="page active">
+        <div class="container">
+            <div class="welcome-section">
+                <h1>🏫 Selamat Datang di Sistem Pelanggaran Siswa</h1>
+                <h2>SMK BAKTI NUSANTARA 666</h2>
+                <p>Sistem informasi untuk mengelola dan memantau pelanggaran siswa secara digital</p>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-card blue">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-info">
+                        <h3>Total Siswa</h3>
+                        <p id="total-siswa">450</p>
+                    </div>
+                </div>
+                <div class="stat-card red">
+                    <div class="stat-icon">⚠️</div>
+                    <div class="stat-info">
+                        <h3>Total Pelanggaran</h3>
+                        <p id="total-pelanggaran">25</p>
+                    </div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-info">
+                        <h3>Pelanggaran Bulan Ini</h3>
+                        <p id="pelanggaran-bulan">8</p>
+                    </div>
+                </div>
+                <div class="stat-card green">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-info">
+                        <h3>Siswa Tertib</h3>
+                        <p id="siswa-tertib">425</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quick-actions">
+                <h3>🚀 Aksi Cepat</h3>
+                <div class="action-buttons">
+                    <a href="data-siswa.html" class="action-btn">
+                        <span class="btn-icon">👤</span>
+                        <span>Kelola Siswa</span>
+                    </a>
+                    <a href="pelanggaran.html" class="action-btn">
+                        <span class="btn-icon">📝</span>
+                        <span>Catat Pelanggaran</span>
+                    </a>
+                    <a href="aturan.html" target="_blank" class="action-btn">
+                        <span class="btn-icon">📋</span>
+                        <span>Lihat Aturan</span>
+                    </a>
+                    <a href="histori.html" target="_blank" class="action-btn">
+                        <span class="btn-icon">📊</span>
+                        <span>Histori Data</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="recent-activities">
+                <h3>📋 Aktivitas Terbaru</h3>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">⚠️</div>
+                        <div class="activity-content">
+                            <h4>Pelanggaran Baru</h4>
+                            <p>Ahmad Rizki - Terlambat masuk kelas</p>
+                            <small>2 jam yang lalu</small>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">👤</div>
+                        <div class="activity-content">
+                            <h4>Siswa Baru</h4>
+                            <p>Maya Sari ditambahkan ke sistem</p>
+                            <small>1 hari yang lalu</small>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">✅</div>
+                        <div class="activity-content">
+                            <h4>Sanksi Selesai</h4>
+                            <p>Budi Santoso menyelesaikan sanksi</p>
+                            <small>3 hari yang lalu</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Check login status
+        if (!localStorage.getItem('currentUser')) {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

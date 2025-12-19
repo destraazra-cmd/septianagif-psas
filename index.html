@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Pelanggaran Siswa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h2>SMK BAKTI NUSANTARA 666</h2>
+        </div>
+        <ul class="nav-menu" id="nav-menu">
+            <li><a href="#" onclick="showPage('beranda')">Beranda</a></li>
+            <li><a href="#" onclick="showPage('data-siswa')">Data Siswa</a></li>
+            <li><a href="#" onclick="showPage('pelanggaran')">Pelanggaran</a></li>
+            <li><a href="#" onclick="showPage('aturan')">Aturan Sekolah</a></li>
+            <li><a href="#" onclick="showPage('histori')">Histori Ajaran</a></li>
+            <li><a href="#" onclick="showPage('info-sekolah')">Info Sekolah</a></li>
+            <li><a href="#" onclick="showPage('tentang')">Tentang</a></li>
+            <li><a href="#" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Login Page -->
+    <div id="login-page" class="page active">
+        <div class="login-container">
+            <h2>Login Sistem</h2>
+            <form id="login-form">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <div id="login-error" style="color: red; margin-top: 1rem; text-align: center; display: none;"></div>
+            <div style="margin-top: 1rem; text-align: center; font-size: 0.9rem; color: #666;">
+                <p><strong>Akun Demo:</strong></p>
+                <p>Username: admin | Password: admin123</p>
+                <p>Username: guru | Password: guru123</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Beranda -->
+    <div id="beranda" class="page">
+        <div class="container">
+            <div class="welcome-section">
+                <h1>🏫 Selamat Datang di Sistem Pelanggaran Siswa</h1>
+                <h2>SMK BAKTI NUSANTARA 666</h2>
+                <p>Sistem informasi untuk mengelola dan memantau pelanggaran siswa secara digital</p>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-card blue">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-info">
+                        <h3>Total Siswa</h3>
+                        <p id="total-siswa">0</p>
+                    </div>
+                </div>
+                <div class="stat-card red">
+                    <div class="stat-icon">⚠️</div>
+                    <div class="stat-info">
+                        <h3>Total Pelanggaran</h3>
+                        <p id="total-pelanggaran">0</p>
+                    </div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-info">
+                        <h3>Pelanggaran Bulan Ini</h3>
+                        <p id="pelanggaran-bulan">0</p>
+                    </div>
+                </div>
+                <div class="stat-card green">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-info">
+                        <h3>Siswa Tertib</h3>
+                        <p id="siswa-tertib">0</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="quick-actions">
+                <h3>🚀 Aksi Cepat</h3>
+                <div class="action-buttons">
+                    <button class="action-btn" onclick="showPage('data-siswa')">
+                        <span class="btn-icon">👤</span>
+                        <span>Kelola Siswa</span>
+                    </button>
+                    <button class="action-btn" onclick="showPage('pelanggaran')">
+                        <span class="btn-icon">📝</span>
+                        <span>Catat Pelanggaran</span>
+                    </button>
+                    <button class="action-btn" onclick="showPage('aturan')">
+                        <span class="btn-icon">📋</span>
+                        <span>Lihat Aturan</span>
+                    </button>
+                    <button class="action-btn" onclick="showPage('histori')">
+                        <span class="btn-icon">📊</span>
+                        <span>Histori Data</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Data Siswa -->
+    <div id="data-siswa" class="page">
+        <div class="container">
+            <h1>Data Siswa</h1>
+            <button class="btn-primary" onclick="showModal('add-siswa')">Tambah Siswa</button>
+            <table id="siswa-table">
+                <thead>
+                    <tr>
+                        <th>NIS</th>
+                        <th>Nama</th>
+                        <th>Kelas</th>
+                        <th>Alamat</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="siswa-tbody"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Pelanggaran -->
+    <div id="pelanggaran" class="page">
+        <div class="container">
+            <h1>Data Pelanggaran</h1>
+            <button class="btn-primary" onclick="showModal('add-pelanggaran')">Tambah Pelanggaran</button>
+            <table id="pelanggaran-table">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Tanggal</th>
+                        <th>NIS</th>
+                        <th>Nama Siswa</th>
+                        <th>Kelas</th>
+                        <th>Jenis Pelanggaran</th>
+                        <th>Sanksi</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Aturan Sekolah -->
+    <div id="aturan" class="page">
+        <div class="container">
+            <h1>📋 Aturan & Tata Tertib Sekolah</h1>
+            
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <h3>🕐 Kedisiplinan Waktu</h3>
+                    <ul>
+                        <li>Siswa wajib hadir tepat waktu (07:00 WIB)</li>
+                        <li>Tidak boleh terlambat lebih dari 15 menit</li>
+                        <li>Izin keluar kelas harus seizin guru</li>
+                        <li>Pulang sesuai jadwal yang ditentukan</li>
+                    </ul>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>👔 Seragam & Penampilan</h3>
+                    <ul>
+                        <li>Berpakaian seragam sesuai ketentuan</li>
+                        <li>Sepatu hitam, kaos kaki putih</li>
+                        <li>Rambut rapi, tidak dicat</li>
+                        <li>Tidak memakai aksesoris berlebihan</li>
+                    </ul>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>📚 Kegiatan Belajar</h3>
+                    <ul>
+                        <li>Mengerjakan tugas tepat waktu</li>
+                        <li>Membawa buku sesuai jadwal</li>
+                        <li>Tidak mengganggu proses belajar</li>
+                        <li>Aktif dalam kegiatan pembelajaran</li>
+                    </ul>
+                </div>
+                
+                <div class="rule-card">
+                    <h3>🤝 Sikap & Perilaku</h3>
+                    <ul>
+                        <li>Menghormati guru dan sesama siswa</li>
+                        <li>Tidak berkelahi atau bullying</li>
+                        <li>Menjaga kebersihan lingkungan</li>
+                        <li>Tidak merokok di area sekolah</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="sanctions-section">
+                <h3>⚖️ Tingkat Sanksi Pelanggaran</h3>
+                <div class="sanction-levels">
+                    <div class="sanction-card light">
+                        <h4>🟡 Pelanggaran Ringan</h4>
+                        <p><strong>Contoh:</strong> Terlambat, tidak mengerjakan PR</p>
+                        <p><strong>Sanksi:</strong> Teguran lisan, nasihat</p>
+                    </div>
+                    <div class="sanction-card medium">
+                        <h4>🟠 Pelanggaran Sedang</h4>
+                        <p><strong>Contoh:</strong> Tidak berseragam, mengganggu kelas</p>
+                        <p><strong>Sanksi:</strong> Teguran tertulis, panggilan orang tua</p>
+                    </div>
+                    <div class="sanction-card heavy">
+                        <h4>🔴 Pelanggaran Berat</h4>
+                        <p><strong>Contoh:</strong> Berkelahi, merokok, membawa barang terlarang</p>
+                        <p><strong>Sanksi:</strong> Skorsing, perjanjian tertulis</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Histori Ajaran -->
+    <div id="histori" class="page">
+        <div class="container">
+            <h1>📊 Histori Tahun Ajaran</h1>
+            
+            <div class="histori-stats">
+                <div class="current-year">
+                    <h2>📅 Tahun Ajaran Aktif: 2024/2025</h2>
+                    <div class="year-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" id="pelanggaran-2024">0</span>
+                            <span class="stat-label">Total Pelanggaran</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="siswa-aktif">0</span>
+                            <span class="stat-label">Siswa Aktif</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" id="kasus-selesai">0</span>
+                            <span class="stat-label">Kasus Selesai</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="histori-timeline">
+                <h3>📈 Riwayat Tahun Sebelumnya</h3>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2023/2024</div>
+                    <div class="timeline-content">
+                        <h4>Tahun Ajaran 2023/2024</h4>
+                        <div class="timeline-stats">
+                            <span>📊 Total Pelanggaran: <strong>25</strong></span>
+                            <span>👥 Total Siswa: <strong>450</strong></span>
+                            <span>✅ Tingkat Kedisiplinan: <strong>94%</strong></span>
+                        </div>
+                        <p>Pelanggaran terbanyak: Keterlambatan (60%), Seragam tidak lengkap (25%)</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2022/2023</div>
+                    <div class="timeline-content">
+                        <h4>Tahun Ajaran 2022/2023</h4>
+                        <div class="timeline-stats">
+                            <span>📊 Total Pelanggaran: <strong>32</strong></span>
+                            <span>👥 Total Siswa: <strong>425</strong></span>
+                            <span>✅ Tingkat Kedisiplinan: <strong>92%</strong></span>
+                        </div>
+                        <p>Pelanggaran terbanyak: Keterlambatan (55%), Tidak mengerjakan tugas (30%)</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2021/2022</div>
+                    <div class="timeline-content">
+                        <h4>Tahun Ajaran 2021/2022</h4>
+                        <div class="timeline-stats">
+                            <span>📊 Total Pelanggaran: <strong>18</strong></span>
+                            <span>👥 Total Siswa: <strong>400</strong></span>
+                            <span>✅ Tingkat Kedisiplinan: <strong>95%</strong></span>
+                        </div>
+                        <p>Tahun dengan tingkat kedisiplinan tertinggi (Pembelajaran Hybrid)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Info Sekolah -->
+    <div id="info-sekolah" class="page">
+        <div class="container">
+            <h1>🏫 Informasi Sekolah</h1>
+            
+            <div class="school-header">
+                <div class="school-logo">🎓</div>
+                <div class="school-title">
+                    <h2>SMK BAKTI NUSANTARA 666</h2>
+                    <p>Sekolah Menengah Kejuruan Unggulan</p>
+                </div>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>📍 Alamat & Kontak</h3>
+                    <div class="info-item">
+                        <span class="info-icon">🏠</span>
+                        <div>
+                            <strong>Alamat:</strong><br>
+                            Jl. Pendidikan Teknologi No. 666<br>
+                            Jakarta Selatan, DKI Jakarta 12345
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <div><strong>Telepon:</strong> (021) 7654-3210</div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <div><strong>Email:</strong> info@smkbaktinusantara666.sch.id</div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🌐</span>
+                        <div><strong>Website:</strong> www.smkbaktinusantara666.sch.id</div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3>👥 Pimpinan Sekolah</h3>
+                    <div class="info-item">
+                        <span class="info-icon">👨‍💼</span>
+                        <div>
+                            <strong>Kepala Sekolah:</strong><br>
+                            Drs. Budi Santoso, M.Pd<br>
+                            <small>NIP: 196505151990031003</small>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">👩‍💼</span>
+                        <div>
+                            <strong>Wakil Kepala Sekolah:</strong><br>
+                            Siti Nurhaliza, S.Pd, M.M<br>
+                            <small>Bidang Kesiswaan</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3>🎯 Visi & Misi</h3>
+                    <div class="vision-mission">
+                        <div class="vision">
+                            <h4>👁️ VISI</h4>
+                            <p>"Menjadi SMK unggulan yang menghasilkan lulusan berkarakter, kompeten, dan siap kerja di era digital"</p>
+                        </div>
+                        <div class="mission">
+                            <h4>🚀 MISI</h4>
+                            <ul>
+                                <li>Menyelenggarakan pendidikan berkualitas tinggi</li>
+                                <li>Mengembangkan karakter siswa yang berakhlak mulia</li>
+                                <li>Membekali siswa dengan keterampilan teknologi terkini</li>
+                                <li>Menjalin kerjasama dengan dunia industri</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3>🏆 Program Keahlian</h3>
+                    <div class="programs">
+                        <div class="program-item">
+                            <span class="program-icon">💻</span>
+                            <div>
+                                <strong>Teknik Komputer & Jaringan</strong>
+                                <p>Akreditasi A</p>
+                            </div>
+                        </div>
+                        <div class="program-item">
+                            <span class="program-icon">📱</span>
+                            <div>
+                                <strong>Rekayasa Perangkat Lunak</strong>
+                                <p>Akreditasi A</p>
+                            </div>
+                        </div>
+                        <div class="program-item">
+                            <span class="program-icon">🎨</span>
+                            <div>
+                                <strong>Multimedia</strong>
+                                <p>Akreditasi B</p>
+                            </div>
+                        </div>
+                        <div class="program-item">
+                            <span class="program-icon">⚡</span>
+                            <div>
+                                <strong>Teknik Instalasi Tenaga Listrik</strong>
+                                <p>Akreditasi B</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tentang -->
+    <div id="tentang" class="page">
+        <div class="container">
+            <h1>💡 Tentang Aplikasi</h1>
+            
+            <div class="about-header">
+                <div class="app-icon">📱</div>
+                <div class="app-info">
+                    <h2>Sistem Informasi Pelanggaran Siswa</h2>
+                    <p>Aplikasi digital untuk mengelola dan memantau kedisiplinan siswa</p>
+                    <div class="version-badge">v2.1.0</div>
+                </div>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>🎯 Tujuan Aplikasi</h3>
+                    <p>Membantu sekolah dalam mengelola data pelanggaran siswa secara digital, efisien, dan terstruktur untuk meningkatkan kedisiplinan dan karakter siswa.</p>
+                </div>
+                
+                <div class="about-card">
+                    <h3>✨ Fitur Utama</h3>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <span class="feature-icon">👥</span>
+                            <span>Manajemen Data Siswa Lengkap</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📝</span>
+                            <span>Pencatatan Pelanggaran Real-time</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📊</span>
+                            <span>Dashboard & Statistik</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📋</span>
+                            <span>Database Aturan Sekolah</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📈</span>
+                            <span>Laporan Histori Tahunan</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🔒</span>
+                            <span>Sistem Login Aman</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-card">
+                    <h3>🛠️ Teknologi</h3>
+                    <div class="tech-stack">
+                        <div class="tech-item">
+                            <span class="tech-icon">🌐</span>
+                            <div>
+                                <strong>Frontend:</strong>
+                                <p>HTML5, CSS3, JavaScript ES6</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">💾</span>
+                            <div>
+                                <strong>Storage:</strong>
+                                <p>Local Storage Browser</p>
+                            </div>
+                        </div>
+                        <div class="tech-item">
+                            <span class="tech-icon">📱</span>
+                            <div>
+                                <strong>Design:</strong>
+                                <p>Responsive Web Design</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-card">
+                    <h3>👨‍💻 Tim Pengembang</h3>
+                    <div class="team-info">
+                        <div class="team-member">
+                            <span class="member-icon">👨‍💻</span>
+                            <div>
+                                <strong>Lead Developer</strong>
+                                <p>Tim IT SMK Bakti Nusantara 666</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <span class="member-icon">🎨</span>
+                            <div>
+                                <strong>UI/UX Designer</strong>
+                                <p>Siswa Multimedia</p>
+                            </div>
+                        </div>
+                        <div class="team-member">
+                            <span class="member-icon">🧪</span>
+                            <div>
+                                <strong>Quality Assurance</strong>
+                                <p>Guru BK & Kesiswaan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-card">
+                    <h3>📞 Dukungan & Bantuan</h3>
+                    <div class="support-info">
+                        <p>Jika mengalami kendala atau membutuhkan bantuan:</p>
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span>Email: support@smkbaktinusantara666.sch.id</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <span>Telepon: (021) 7654-3210 ext. 101</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🏢</span>
+                            <span>Ruang IT Sekolah (Lantai 2)</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-card">
+                    <h3>📋 Changelog</h3>
+                    <div class="changelog">
+                        <div class="version-item">
+                            <strong>v2.1.0</strong> - Desember 2024
+                            <ul>
+                                <li>Tampilan dashboard yang lebih menarik</li>
+                                <li>Fitur statistik real-time</li>
+                                <li>Perbaikan bug minor</li>
+                            </ul>
+                        </div>
+                        <div class="version-item">
+                            <strong>v2.0.0</strong> - November 2024
+                            <ul>
+                                <li>Redesign UI/UX</li>
+                                <li>Sistem login yang lebih aman</li>
+                                <li>Fitur histori tahun ajaran</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Siswa -->
+    <div id="add-siswa" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('add-siswa')">&times;</span>
+            <h2>Tambah Data Siswa</h2>
+            <form id="siswa-form">
+                <input type="text" id="nis" placeholder="NIS" required>
+                <input type="text" id="nama" placeholder="Nama Lengkap" required>
+                <input type="text" id="kelas" placeholder="Kelas" required>
+                <textarea id="alamat" placeholder="Alamat" required></textarea>
+                <button type="submit">Simpan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Pelanggaran -->
+    <div id="add-pelanggaran" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('add-pelanggaran')">&times;</span>
+            <h2>Tambah Pelanggaran</h2>
+            <form id="pelanggaran-form">
+                <input type="date" id="tanggal" required>
+                <select id="siswa-select" required>
+                    <option value="">Pilih Siswa</option>
+                </select>
+                <select id="jenis-pelanggaran" required>
+                    <option value="">Pilih Jenis Pelanggaran</option>
+                    <option value="Terlambat">Terlambat</option>
+                    <option value="Tidak berseragam">Tidak berseragam</option>
+                    <option value="Tidak mengerjakan tugas">Tidak mengerjakan tugas</option>
+                    <option value="Berkelahi">Berkelahi</option>
+                    <option value="Merokok">Merokok</option>
+                </select>
+                <textarea id="sanksi" placeholder="Sanksi" required></textarea>
+                <button type="submit">Simpan</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Edit Siswa -->
+    <div id="edit-siswa" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('edit-siswa')">&times;</span>
+            <h2>Edit Data Siswa</h2>
+            <form id="edit-siswa-form">
+                <input type="hidden" id="edit-id">
+                <input type="text" id="edit-nis" placeholder="NIS" required>
+                <input type="text" id="edit-nama" placeholder="Nama Lengkap" required>
+                <input type="text" id="edit-kelas" placeholder="Kelas" required>
+                <textarea id="edit-alamat" placeholder="Alamat" required></textarea>
+                <button type="submit">Update</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pelanggaran - SMK Bakti Nusantara 666</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h2>SMK BAKTI NUSANTARA 666</h2>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="beranda.html">Beranda</a></li>
+            <li><a href="data-siswa.html">Data Siswa</a></li>
+            <li><a href="pelanggaran.html" class="active">Pelanggaran</a></li>
+            <li><a href="aturan.html">Aturan Sekolah</a></li>
+            <li><a href="histori.html">Histori Ajaran</a></li>
+            <li><a href="info-sekolah.html">Info Sekolah</a></li>
+            <li><a href="tentang.html">Tentang</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="page active">
+        <div class="container">
+            <div class="page-header">
+                <h1>⚠️ Data Pelanggaran Siswa</h1>
+                <p>Kelola dan pantau pelanggaran siswa</p>
+            </div>
+
+            <div class="violation-stats">
+                <div class="stat-row">
+                    <div class="stat-box red">
+                        <h3>Total Pelanggaran</h3>
+                        <p>25</p>
+                    </div>
+                    <div class="stat-box orange">
+                        <h3>Bulan Ini</h3>
+                        <p>8</p>
+                    </div>
+                    <div class="stat-box yellow">
+                        <h3>Minggu Ini</h3>
+                        <p>3</p>
+                    </div>
+                    <div class="stat-box blue">
+                        <h3>Hari Ini</h3>
+                        <p>1</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="violation-chart">
+                <h3>📊 Grafik Pelanggaran per Jenis</h3>
+                <div class="chart-container">
+                    <div class="chart-bar">
+                        <div class="bar" style="height: 80%;">
+                            <span class="bar-label">Terlambat</span>
+                            <span class="bar-value">15</span>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar" style="height: 40%;">
+                            <span class="bar-label">Seragam</span>
+                            <span class="bar-value">6</span>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar" style="height: 20%;">
+                            <span class="bar-label">Tugas</span>
+                            <span class="bar-value">3</span>
+                        </div>
+                    </div>
+                    <div class="chart-bar">
+                        <div class="bar" style="height: 10%;">
+                            <span class="bar-label">Lainnya</span>
+                            <span class="bar-value">1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-controls">
+                <button class="btn-primary" onclick="showModal('add-pelanggaran')">➕ Tambah Pelanggaran</button>
+                <div class="search-filter">
+                    <input type="text" id="search-pelanggaran" placeholder="🔍 Cari pelanggaran...">
+                    <select id="filter-jenis">
+                        <option value="">Semua Jenis</option>
+                        <option value="Terlambat">Terlambat</option>
+                        <option value="Tidak berseragam">Tidak berseragam</option>
+                        <option value="Tidak mengerjakan tugas">Tidak mengerjakan tugas</option>
+                        <option value="Berkelahi">Berkelahi</option>
+                        <option value="Merokok">Merokok</option>
+                    </select>
+                    <input type="date" id="filter-tanggal">
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="pelanggaran-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Tanggal</th>
+                            <th>NIS</th>
+                            <th>Nama Siswa</th>
+                            <th>Kelas</th>
+                            <th>Jenis Pelanggaran</th>
+                            <th>Tingkat</th>
+                            <th>Sanksi</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>19/12/2024</td>
+                            <td>2024001</td>
+                            <td>Ahmad Rizki Pratama</td>
+                            <td>XII TKJ 1</td>
+                            <td>Terlambat</td>
+                            <td><span class="level ringan">Ringan</span></td>
+                            <td>Teguran lisan dan membersihkan kelas</td>
+                            <td><span class="status selesai">Selesai</span></td>
+                            <td>
+                                <button class="btn-view" onclick="viewPelanggaran(1)">👁️</button>
+                                <button class="btn-edit" onclick="editPelanggaran(1)">✏️</button>
+                                <button class="btn-delete" onclick="deletePelanggaran(1)">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>18/12/2024</td>
+                            <td>2024003</td>
+                            <td>Budi Santoso</td>
+                            <td>XI MM 2</td>
+                            <td>Tidak berseragam</td>
+                            <td><span class="level sedang">Sedang</span></td>
+                            <td>Teguran tertulis dan panggilan orang tua</td>
+                            <td><span class="status proses">Proses</span></td>
+                            <td>
+                                <button class="btn-view" onclick="viewPelanggaran(2)">👁️</button>
+                                <button class="btn-edit" onclick="editPelanggaran(2)">✏️</button>
+                                <button class="btn-delete" onclick="deletePelanggaran(2)">🗑️</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>17/12/2024</td>
+                            <td>2024002</td>
+                            <td>Siti Nurhaliza Putri</td>
+                            <td>XII RPL 1</td>
+                            <td>Tidak mengerjakan tugas</td>
+                            <td><span class="level ringan">Ringan</span></td>
+                            <td>Mengerjakan tugas tambahan</td>
+                            <td><span class="status selesai">Selesai</span></td>
+                            <td>
+                                <button class="btn-view" onclick="viewPelanggaran(3)">👁️</button>
+                                <button class="btn-edit" onclick="editPelanggaran(3)">✏️</button>
+                                <button class="btn-delete" onclick="deletePelanggaran(3)">🗑️</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Pelanggaran -->
+    <div id="add-pelanggaran" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('add-pelanggaran')">&times;</span>
+            <h2>➕ Tambah Pelanggaran</h2>
+            <form id="pelanggaran-form">
+                <div class="form-row">
+                    <input type="date" id="tanggal" required>
+                    <input type="time" id="waktu" required>
+                </div>
+                <select id="siswa-select" required>
+                    <option value="">Pilih Siswa</option>
+                    <option value="2024001">2024001 - Ahmad Rizki Pratama (XII TKJ 1)</option>
+                    <option value="2024002">2024002 - Siti Nurhaliza Putri (XII RPL 1)</option>
+                    <option value="2024003">2024003 - Budi Santoso (XI MM 2)</option>
+                </select>
+                <select id="jenis-pelanggaran" required>
+                    <option value="">Pilih Jenis Pelanggaran</option>
+                    <option value="Terlambat">Terlambat masuk sekolah/kelas</option>
+                    <option value="Tidak berseragam">Tidak berseragam lengkap</option>
+                    <option value="Tidak mengerjakan tugas">Tidak mengerjakan tugas</option>
+                    <option value="Mengganggu kelas">Mengganggu proses pembelajaran</option>
+                    <option value="Berkelahi">Berkelahi dengan siswa lain</option>
+                    <option value="Merokok">Merokok di area sekolah</option>
+                    <option value="Membawa HP">Membawa HP saat ujian</option>
+                    <option value="Bolos">Membolos pelajaran</option>
+                </select>
+                <select id="tingkat-pelanggaran" required>
+                    <option value="">Pilih Tingkat</option>
+                    <option value="Ringan">Pelanggaran Ringan</option>
+                    <option value="Sedang">Pelanggaran Sedang</option>
+                    <option value="Berat">Pelanggaran Berat</option>
+                </select>
+                <textarea id="keterangan" placeholder="Keterangan detail pelanggaran..." required></textarea>
+                <textarea id="sanksi" placeholder="Sanksi yang diberikan..." required></textarea>
+                <select id="status-sanksi" required>
+                    <option value="">Status Sanksi</option>
+                    <option value="Belum">Belum Dilaksanakan</option>
+                    <option value="Proses">Sedang Proses</option>
+                    <option value="Selesai">Sudah Selesai</option>
+                </select>
+                <button type="submit">💾 Simpan Pelanggaran</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Detail Pelanggaran -->
+    <div id="view-pelanggaran" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('view-pelanggaran')">&times;</span>
+            <h2>👁️ Detail Pelanggaran</h2>
+            <div class="violation-detail">
+                <div class="detail-header">
+                    <div class="violation-icon">⚠️</div>
+                    <div class="violation-info">
+                        <h3>Terlambat masuk kelas</h3>
+                        <p>19 Desember 2024, 07:30 WIB</p>
+                        <span class="level ringan">Pelanggaran Ringan</span>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <div class="detail-section">
+                        <h4>👤 Data Siswa</h4>
+                        <p><strong>Nama:</strong> Ahmad Rizki Pratama</p>
+                        <p><strong>NIS:</strong> 2024001</p>
+                        <p><strong>Kelas:</strong> XII TKJ 1</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>📝 Detail Pelanggaran</h4>
+                        <p><strong>Jenis:</strong> Terlambat masuk sekolah</p>
+                        <p><strong>Keterangan:</strong> Siswa terlambat masuk kelas karena bangun kesiangan</p>
+                        <p><strong>Pelapor:</strong> Pak Joko (Guru Piket)</p>
+                    </div>
+                    <div class="detail-section">
+                        <h4>⚖️ Sanksi</h4>
+                        <p><strong>Sanksi:</strong> Teguran lisan dan membersihkan kelas</p>
+                        <p><strong>Status:</strong> <span class="status selesai">Sudah Selesai</span></p>
+                        <p><strong>Tanggal Selesai:</strong> 19 Desember 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Check login status
+        if (!localStorage.getItem('currentUser')) {
+            window.location.href = 'index.html';
+        }
+        
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSampleData();
+            loadPelanggaranTable();
+            loadSiswaSelect();
+            
+            // Set tanggal hari ini sebagai default
+            document.getElementById('tanggal').value = new Date().toISOString().split('T')[0];
+            document.getElementById('waktu').value = new Date().toTimeString().slice(0,5);
+        });
+        
+        function viewPelanggaran(id) {
+            showModal('view-pelanggaran');
+        }
+
+        function editPelanggaran(id) {
+            alert('Edit pelanggaran ID: ' + id);
+        }
+    </script>
+</body>
+</html>

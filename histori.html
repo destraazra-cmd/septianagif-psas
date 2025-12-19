@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histori Ajaran - SMK Bakti Nusantara 666</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages-style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h2>SMK BAKTI NUSANTARA 666</h2>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="beranda.html">Beranda</a></li>
+            <li><a href="data-siswa.html">Data Siswa</a></li>
+            <li><a href="pelanggaran.html">Pelanggaran</a></li>
+            <li><a href="aturan.html">Aturan Sekolah</a></li>
+            <li><a href="histori.html" class="active">Histori Ajaran</a></li>
+            <li><a href="info-sekolah.html">Info Sekolah</a></li>
+            <li><a href="tentang.html">Tentang</a></li>
+            <li><a href="#" onclick="confirmLogout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="page active">
+        <div class="container">
+            <div class="page-header">
+                <h1>📊 Histori Ajaran</h1>
+                <p>Data historis tahun ajaran SMK Bakti Nusantara 666</p>
+            </div>
+
+            <div class="filter-section">
+                <div class="filter-controls">
+                    <select id="tahun-filter">
+                        <option value="2023/2024">2023/2024</option>
+                        <option value="2022/2023">2022/2023</option>
+                        <option value="2021/2022">2021/2022</option>
+                        <option value="2020/2021">2020/2021</option>
+                    </select>
+                    <select id="semester-filter">
+                        <option value="all">Semua Semester</option>
+                        <option value="ganjil">Semester Ganjil</option>
+                        <option value="genap">Semester Genap</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="history-stats">
+                <div class="stat-card blue">
+                    <h3>Total Siswa</h3>
+                    <p class="stat-number">450</p>
+                    <small>Tahun Ajaran 2023/2024</small>
+                </div>
+                <div class="stat-card red">
+                    <h3>Total Pelanggaran</h3>
+                    <p class="stat-number">127</p>
+                    <small>Sepanjang tahun</small>
+                </div>
+                <div class="stat-card green">
+                    <h3>Tingkat Kedisiplinan</h3>
+                    <p class="stat-number">94.5%</p>
+                    <small>Meningkat dari tahun lalu</small>
+                </div>
+                <div class="stat-card orange">
+                    <h3>Siswa Lulus</h3>
+                    <p class="stat-number">98.2%</p>
+                    <small>Tingkat kelulusan</small>
+                </div>
+            </div>
+
+            <div class="timeline-section">
+                <h2>📅 Timeline Tahun Ajaran 2023/2024</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Juli 2023</div>
+                        <div class="timeline-content">
+                            <h3>Penerimaan Siswa Baru</h3>
+                            <p>150 siswa baru diterima dari 300 pendaftar</p>
+                            <ul>
+                                <li>TKJ: 50 siswa</li>
+                                <li>RPL: 45 siswa</li>
+                                <li>MM: 35 siswa</li>
+                                <li>OTKP: 20 siswa</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">Agustus 2023</div>
+                        <div class="timeline-content">
+                            <h3>Masa Orientasi Siswa</h3>
+                            <p>MPLS dilaksanakan selama 3 hari</p>
+                            <ul>
+                                <li>Pengenalan lingkungan sekolah</li>
+                                <li>Sosialisasi tata tertib</li>
+                                <li>Pembentukan karakter</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">September 2023</div>
+                        <div class="timeline-content">
+                            <h3>Evaluasi Bulan Pertama</h3>
+                            <p>Tingkat pelanggaran masih tinggi pada siswa baru</p>
+                            <ul>
+                                <li>Keterlambatan: 45 kasus</li>
+                                <li>Seragam tidak lengkap: 23 kasus</li>
+                                <li>HP bunyi di kelas: 12 kasus</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">Desember 2023</div>
+                        <div class="timeline-content">
+                            <h3>Ujian Akhir Semester Ganjil</h3>
+                            <p>Pelaksanaan UAS berjalan lancar</p>
+                            <ul>
+                                <li>Tingkat kehadiran: 98.5%</li>
+                                <li>Kasus menyontek: 3 kasus</li>
+                                <li>Rata-rata nilai: 82.3</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">Februari 2024</div>
+                        <div class="timeline-content">
+                            <h3>Prakerin Gelombang 1</h3>
+                            <p>Siswa kelas XI mulai praktek kerja industri</p>
+                            <ul>
+                                <li>120 siswa ditempatkan</li>
+                                <li>25 perusahaan mitra</li>
+                                <li>Durasi: 6 bulan</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-date">Mei 2024</div>
+                        <div class="timeline-content">
+                            <h3>Ujian Nasional & Sekolah</h3>
+                            <p>Pelaksanaan ujian kelas XII</p>
+                            <ul>
+                                <li>Peserta UN: 145 siswa</li>
+                                <li>Tingkat kelulusan: 98.2%</li>
+                                <li>Nilai rata-rata: 85.7</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comparison-section">
+                <h2>📈 Perbandingan Tahun Ajaran</h2>
+                <div class="comparison-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Tahun Ajaran</th>
+                                <th>Total Siswa</th>
+                                <th>Pelanggaran</th>
+                                <th>Tingkat Kedisiplinan</th>
+                                <th>Kelulusan</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>2023/2024</td>
+                                <td>450</td>
+                                <td>127</td>
+                                <td>94.5%</td>
+                                <td>98.2%</td>
+                            </tr>
+                            <tr>
+                                <td>2022/2023</td>
+                                <td>435</td>
+                                <td>156</td>
+                                <td>92.1%</td>
+                                <td>97.8%</td>
+                            </tr>
+                            <tr>
+                                <td>2021/2022</td>
+                                <td>420</td>
+                                <td>189</td>
+                                <td>89.3%</td>
+                                <td>96.5%</td>
+                            </tr>
+                            <tr>
+                                <td>2020/2021</td>
+                                <td>398</td>
+                                <td>203</td>
+                                <td>87.2%</td>
+                                <td>95.1%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="achievement-section">
+                <h2>🏆 Prestasi & Pencapaian</h2>
+                <div class="achievement-grid">
+                    <div class="achievement-item">
+                        <h3>2023/2024</h3>
+                        <ul>
+                            <li>🥇 Juara 1 LKS Tingkat Provinsi (RPL)</li>
+                            <li>🥈 Juara 2 Olimpiade Matematika</li>
+                            <li>🏅 Sekolah Adiwiyata Tingkat Kota</li>
+                        </ul>
+                    </div>
+                    <div class="achievement-item">
+                        <h3>2022/2023</h3>
+                        <ul>
+                            <li>🥉 Juara 3 LKS Tingkat Nasional (TKJ)</li>
+                            <li>🏅 Sekolah Sehat Tingkat Provinsi</li>
+                            <li>⭐ Akreditasi A</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="notes-section">
+                <h3>📝 Catatan Penting</h3>
+                <div class="notes-list">
+                    <div class="note-item">
+                        <strong>Peningkatan Kedisiplinan:</strong> Terjadi peningkatan signifikan tingkat kedisiplinan siswa dari 87.2% (2020/2021) menjadi 94.5% (2023/2024)
+                    </div>
+                    <div class="note-item">
+                        <strong>Program Unggulan:</strong> Implementasi sistem poin pelanggaran digital terbukti efektif mengurangi tingkat pelanggaran
+                    </div>
+                    <div class="note-item">
+                        <strong>Kerjasama Industri:</strong> Bertambahnya mitra industri dari 15 menjadi 25 perusahaan untuk program prakerin
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function confirmLogout() {
+            if (confirm('Yakin ingin logout?')) {
+                localStorage.removeItem('currentUser');
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html>

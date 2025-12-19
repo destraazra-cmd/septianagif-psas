@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Siswa - SMK Bakti Nusantara 666</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h2>SMK BAKTI NUSANTARA 666</h2>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="beranda.html">Beranda</a></li>
+            <li><a href="data-siswa.html" class="active">Data Siswa</a></li>
+            <li><a href="pelanggaran.html">Pelanggaran</a></li>
+            <li><a href="aturan.html">Aturan Sekolah</a></li>
+            <li><a href="histori.html">Histori Ajaran</a></li>
+            <li><a href="info-sekolah.html">Info Sekolah</a></li>
+            <li><a href="tentang.html">Tentang</a></li>
+            <li><a href="index.html">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="page active">
+        <div class="container">
+            <div class="page-header">
+                <h1>👥 Data Siswa</h1>
+                <p>Kelola data siswa SMK Bakti Nusantara 666</p>
+            </div>
+
+            <div class="student-stats">
+                <div class="stat-row">
+                    <div class="stat-box">
+                        <h3>Total Siswa</h3>
+                        <p>450</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Kelas X</h3>
+                        <p>150</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Kelas XI</h3>
+                        <p>150</p>
+                    </div>
+                    <div class="stat-box">
+                        <h3>Kelas XII</h3>
+                        <p>150</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-controls">
+                <button class="btn-primary" onclick="showModal('add-siswa')">➕ Tambah Siswa</button>
+                <div class="search-filter">
+                    <input type="text" id="search-siswa" placeholder="🔍 Cari siswa..." onkeyup="searchSiswa()">
+                    <select id="filter-kelas" onchange="filterKelas()">
+                        <option value="">Semua Kelas</option>
+                        <option value="X">Kelas X</option>
+                        <option value="XI">Kelas XI</option>
+                        <option value="XII">Kelas XII</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="siswa-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>NIS</th>
+                            <th>Nama Lengkap</th>
+                            <th>Kelas</th>
+                            <th>Jurusan</th>
+                            <th>Alamat</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="siswa-tbody">
+                        <tr>
+                            <td>1</td>
+                            <td>2024001</td>
+                            <td>Ahmad Rizki Pratama</td>
+                            <td>XII</td>
+                            <td>TKJ</td>
+                            <td>Jl. Merdeka No. 10, Jakarta Selatan</td>
+                            <td><span class="status active">Aktif</span></td>
+                            <td>
+                                <button class="btn-edit" onclick="editSiswa(1)">✏️ Edit</button>
+                                <button class="btn-view" onclick="viewSiswa(1)">👁️ Lihat</button>
+                                <button class="btn-delete" onclick="deleteSiswa(1)">🗑️ Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>2024002</td>
+                            <td>Siti Nurhaliza Putri</td>
+                            <td>XII</td>
+                            <td>RPL</td>
+                            <td>Jl. Sudirman No. 15, Jakarta Pusat</td>
+                            <td><span class="status active">Aktif</span></td>
+                            <td>
+                                <button class="btn-edit" onclick="editSiswa(2)">✏️ Edit</button>
+                                <button class="btn-view" onclick="viewSiswa(2)">👁️ Lihat</button>
+                                <button class="btn-delete" onclick="deleteSiswa(2)">🗑️ Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>2024003</td>
+                            <td>Budi Santoso</td>
+                            <td>XI</td>
+                            <td>MM</td>
+                            <td>Jl. Diponegoro No. 20, Jakarta Timur</td>
+                            <td><span class="status warning">Peringatan</span></td>
+                            <td>
+                                <button class="btn-edit" onclick="editSiswa(3)">✏️ Edit</button>
+                                <button class="btn-view" onclick="viewSiswa(3)">👁️ Lihat</button>
+                                <button class="btn-delete" onclick="deleteSiswa(3)">🗑️ Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>2024004</td>
+                            <td>Dewi Sartika</td>
+                            <td>X</td>
+                            <td>TKJ</td>
+                            <td>Jl. Gatot Subroto No. 25, Jakarta Barat</td>
+                            <td><span class="status active">Aktif</span></td>
+                            <td>
+                                <button class="btn-edit" onclick="editSiswa(4)">✏️ Edit</button>
+                                <button class="btn-view" onclick="viewSiswa(4)">👁️ Lihat</button>
+                                <button class="btn-delete" onclick="deleteSiswa(4)">🗑️ Hapus</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>2024005</td>
+                            <td>Andi Wijaya</td>
+                            <td>XI</td>
+                            <td>TITL</td>
+                            <td>Jl. Thamrin No. 30, Jakarta Pusat</td>
+                            <td><span class="status active">Aktif</span></td>
+                            <td>
+                                <button class="btn-edit" onclick="editSiswa(5)">✏️ Edit</button>
+                                <button class="btn-view" onclick="viewSiswa(5)">👁️ Lihat</button>
+                                <button class="btn-delete" onclick="deleteSiswa(5)">🗑️ Hapus</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="pagination">
+                <button class="btn-page">« Sebelumnya</button>
+                <span class="page-info">Halaman 1 dari 10</span>
+                <button class="btn-page">Selanjutnya »</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Tambah Siswa -->
+    <div id="add-siswa" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('add-siswa')">&times;</span>
+            <h2>➕ Tambah Data Siswa</h2>
+            <form id="siswa-form">
+                <div class="form-row">
+                    <input type="text" id="nis" placeholder="NIS" required>
+                    <input type="text" id="nama" placeholder="Nama Lengkap" required>
+                </div>
+                <div class="form-row">
+                    <select id="kelas" required>
+                        <option value="">Pilih Kelas</option>
+                        <option value="X">Kelas X</option>
+                        <option value="XI">Kelas XI</option>
+                        <option value="XII">Kelas XII</option>
+                    </select>
+                    <select id="jurusan" required>
+                        <option value="">Pilih Jurusan</option>
+                        <option value="TKJ">Teknik Komputer Jaringan</option>
+                        <option value="RPL">Rekayasa Perangkat Lunak</option>
+                        <option value="MM">Multimedia</option>
+                        <option value="TITL">Teknik Instalasi Tenaga Listrik</option>
+                    </select>
+                </div>
+                <textarea id="alamat" placeholder="Alamat Lengkap" required></textarea>
+                <div class="form-row">
+                    <input type="tel" id="telepon" placeholder="Nomor Telepon">
+                    <input type="email" id="email" placeholder="Email">
+                </div>
+                <div class="form-buttons">
+                    <button type="submit" class="btn-primary">💾 Simpan</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('add-siswa')">❌ Batal</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal View Siswa -->
+    <div id="view-siswa" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('view-siswa')">&times;</span>
+            <h2>👁️ Detail Siswa</h2>
+            <div id="siswa-detail"></div>
+        </div>
+    </div>
+
+</body>
+</html>on">
+                    <input type="email" id="email" placeholder="Email">
+                </div>
+                <button type="submit">💾 Simpan Data</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Lihat Detail Siswa -->
+    <div id="view-siswa" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('view-siswa')">&times;</span>
+            <h2>👁️ Detail Siswa</h2>
+            <div class="student-detail">
+                <div class="detail-header">
+                    <div class="student-avatar">👤</div>
+                    <div class="student-info">
+                        <h3 id="detail-nama">Ahmad Rizki Pratama</h3>
+                        <p id="detail-nis">NIS: 2024001</p>
+                        <p id="detail-kelas">XII TKJ 1</p>
+                    </div>
+                </div>
+                <div class="detail-content">
+                    <div class="detail-item">
+                        <strong>📍 Alamat:</strong>
+                        <p id="detail-alamat">Jl. Merdeka No. 10, Jakarta Selatan</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>📞 Telepon:</strong>
+                        <p id="detail-telepon">081234567890</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>📧 Email:</strong>
+                        <p id="detail-email">ahmad.rizki@email.com</p>
+                    </div>
+                    <div class="detail-item">
+                        <strong>⚠️ Total Pelanggaran:</strong>
+                        <p id="detail-pelanggaran">2 Pelanggaran</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function editSiswa(id) {
+            alert('Edit siswa ID: ' + id);
+        }
+
+        function viewSiswa(id) {
+            showModal('view-siswa');
+        }
+
+        function deleteSiswa(id) {
+            if(confirm('Yakin ingin menghapus data siswa ini?')) {
+                alert('Data siswa ID ' + id + ' dihapus');
+            }
+        }
+
+        function searchSiswa() {
+            // Implementasi pencarian
+        }
+
+        function filterKelas() {
+            // Implementasi filter kelas
+        }
+    </script>
+    <script src="script.js"></script>
+    <script>
+        // Check login status
+        if (!localStorage.getItem('currentUser')) {
+            window.location.href = 'index.html';
+        }
+        
+        // Load data when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSampleData();
+            loadSiswaTable();
+        });
+    </script>
+</body>
+</html>

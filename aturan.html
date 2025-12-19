@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aturan Sekolah - SMK Bakti Nusantara 666</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pages-style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h2>SMK BAKTI NUSANTARA 666</h2>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="beranda.html">Beranda</a></li>
+            <li><a href="data-siswa.html">Data Siswa</a></li>
+            <li><a href="pelanggaran.html">Pelanggaran</a></li>
+            <li><a href="aturan.html" class="active">Aturan Sekolah</a></li>
+            <li><a href="histori.html">Histori Ajaran</a></li>
+            <li><a href="info-sekolah.html">Info Sekolah</a></li>
+            <li><a href="tentang.html">Tentang</a></li>
+            <li><a href="#" onclick="confirmLogout()">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="page active">
+        <div class="container">
+            <div class="page-header">
+                <h1>📋 Aturan Sekolah</h1>
+                <p>Tata tertib dan peraturan SMK Bakti Nusantara 666</p>
+            </div>
+
+            <div class="rules-section">
+                <div class="rule-category">
+                    <h2>🕐 Kedisiplinan Waktu</h2>
+                    <div class="rule-list">
+                        <div class="rule-item">
+                            <h3>Keterlambatan</h3>
+                            <ul>
+                                <li>Terlambat 1-15 menit: Teguran lisan</li>
+                                <li>Terlambat 16-30 menit: Teguran tertulis + berdiri di depan kelas</li>
+                                <li>Terlambat >30 menit: Tidak diizinkan masuk kelas + panggil orang tua</li>
+                            </ul>
+                        </div>
+                        <div class="rule-item">
+                            <h3>Absensi</h3>
+                            <ul>
+                                <li>Alpha 3 hari berturut-turut: Panggil orang tua</li>
+                                <li>Alpha 7 hari dalam sebulan: Skorsing 1 hari</li>
+                                <li>Alpha 15 hari dalam semester: Tidak naik kelas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rule-category">
+                    <h2>👔 Seragam dan Penampilan</h2>
+                    <div class="rule-list">
+                        <div class="rule-item">
+                            <h3>Seragam Sekolah</h3>
+                            <ul>
+                                <li>Seragam tidak lengkap: Teguran + tidak boleh masuk kelas</li>
+                                <li>Seragam kotor/kusut: Teguran tertulis</li>
+                                <li>Tidak memakai atribut sekolah: Teguran + denda Rp 5.000</li>
+                            </ul>
+                        </div>
+                        <div class="rule-item">
+                            <h3>Rambut dan Aksesoris</h3>
+                            <ul>
+                                <li>Rambut tidak rapi (pria): Potong rambut + teguran</li>
+                                <li>Memakai aksesoris berlebihan: Sita barang + teguran</li>
+                                <li>Cat rambut/tato: Skorsing 3 hari</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rule-category">
+                    <h2>📱 Penggunaan Gadget</h2>
+                    <div class="rule-list">
+                        <div class="rule-item">
+                            <h3>HP/Smartphone</h3>
+                            <ul>
+                                <li>HP bunyi saat pelajaran: Sita HP 1 hari</li>
+                                <li>Main HP saat pelajaran: Sita HP 3 hari + teguran tertulis</li>
+                                <li>Foto/video tanpa izin: Sita HP 1 minggu + panggil orang tua</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rule-category">
+                    <h2>🚫 Pelanggaran Berat</h2>
+                    <div class="rule-list">
+                        <div class="rule-item">
+                            <h3>Tindakan Kekerasan</h3>
+                            <ul>
+                                <li>Berkelahi: Skorsing 1 minggu + panggil orang tua</li>
+                                <li>Bullying: Skorsing 3 hari + konseling</li>
+                                <li>Merusak fasilitas: Ganti rugi + skorsing</li>
+                            </ul>
+                        </div>
+                        <div class="rule-item">
+                            <h3>Pelanggaran Moral</h3>
+                            <ul>
+                                <li>Merokok di area sekolah: Skorsing 3 hari</li>
+                                <li>Membawa barang terlarang: Sita barang + skorsing 1 minggu</li>
+                                <li>Berbuat asusila: Dikeluarkan dari sekolah</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rule-category">
+                    <h2>📚 Akademik</h2>
+                    <div class="rule-list">
+                        <div class="rule-item">
+                            <h3>Tugas dan Ujian</h3>
+                            <ul>
+                                <li>Tidak mengerjakan tugas: Nilai 0 + teguran</li>
+                                <li>Menyontek saat ujian: Nilai 0 + teguran tertulis</li>
+                                <li>Membantu menyontek: Nilai 0 + skorsing 1 hari</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sanctions-info">
+                <h2>⚖️ Sistem Poin Pelanggaran</h2>
+                <div class="points-table">
+                    <div class="point-level">
+                        <h3>Ringan (1-10 poin)</h3>
+                        <p>Teguran lisan, teguran tertulis, berdiri di depan kelas</p>
+                    </div>
+                    <div class="point-level">
+                        <h3>Sedang (11-25 poin)</h3>
+                        <p>Panggil orang tua, skorsing 1-3 hari, denda</p>
+                    </div>
+                    <div class="point-level">
+                        <h3>Berat (26-50 poin)</h3>
+                        <p>Skorsing 1 minggu, tidak naik kelas, konseling</p>
+                    </div>
+                    <div class="point-level">
+                        <h3>Sangat Berat (>50 poin)</h3>
+                        <p>Dikeluarkan dari sekolah</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h3>📞 Kontak BK</h3>
+                <p>Untuk konsultasi masalah siswa, hubungi:</p>
+                <p><strong>Ibu Salma, S.Pd</strong> - 082116291591</p>
+                <p><strong>Bapak Ridwan, S.Pd</strong> - 085723750929</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function confirmLogout() {
+            if (confirm('Yakin ingin logout?')) {
+                localStorage.removeItem('currentUser');
+                window.location.href = 'index.html';
+            }
+        }
+    </script>
+</body>
+</html>
